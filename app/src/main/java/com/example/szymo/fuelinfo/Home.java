@@ -16,6 +16,7 @@ public class Home extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = getApplicationContext();
+        getSupportActionBar().setTitle("Witaj");
         setContentView(R.layout.activity_home);
 
     }
