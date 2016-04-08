@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">FuelInfo</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_add_road">AddRoad</string>
+    <string name="welcome">Witaj</string>
+    <string name="action_addnew">Dodaj przejazd</string>
 </resources>
