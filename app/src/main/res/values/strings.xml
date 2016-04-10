@@ -2,4 +2,9 @@
     <string name="app_name">FuelInfo</string>
     <string name="welcome">Witaj</string>
     <string name="action_addnew">Dodaj przejazd</string>
+    <string name="button_addnew">Dodaj</string>
+    <string name="km">Ilość przejechanych kilometrów:</string>
+    <string name="ill">Ilość zatankowanych litrów:</string>
+    <string name="price">Całkowity koszt:</string>
+    <string name="date">Data:</string>
 </resources>
