@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,37 +19,47 @@ import java.text.SimpleDateFormat;
 
 public class AddRoad extends ActionBarActivity {
 
-    EditText editText_km, editText_ill, editText_price, editText_date;
-    Date currentDate;
+    EditText editText_km, editText_ill, editText_Unitprice, editText_date;
     Button button_add;
     Context context;
+    double avgUsage, totalPrice;
+    DBHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_road);
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date date = new Date();
         context = getApplicationContext();
-
-        editText_date = (EditText)findViewById(R.id.editText_date);
-        editText_date.setText(dateFormat.format(date));
+        db = new DBHelper(context);
 
         editText_km = (EditText) findViewById(R.id.editText_km);
         editText_ill = (EditText) findViewById(R.id.editText_ill);
-        editText_price = (EditText) findViewById(R.id.editText_price);
+        editText_Unitprice = (EditText) findViewById(R.id.editText_price);
+        editText_date = (EditText)findViewById(R.id.editText_date);
+        editText_date.setText(dateFormat.format(date));
+
+
 
         button_add = (Button) findViewById(R.id.button_add);
         button_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, Home.class);
-                if(editText_km.getText().toString().equals("") || editText_ill.getText().toString().equals("") || editText_price.getText().toString().equals("")){
+                if(editText_km.getText().toString().equals("") || editText_ill.getText().toString().equals("") || editText_Unitprice.getText().toString().equals("")){
                     Toast.makeText(context, "Uzupelnij wysztkie dane", Toast.LENGTH_LONG).show();
                 }
-                else
-                startActivity(intent);
+                else {
+
+                    //
+                    avgUsage = (100*Double.parseDouble(editText_ill.getText().toString()))/Double.parseDouble(editText_km.getText().toString());
+                    totalPrice = Double.parseDouble(editText_ill.getText().toString()) * Double.parseDouble(editText_Unitprice.getText().toString());
+                    Road r = new Road(editText_km.getText().toString(),editText_ill.getText().toString(),""+String.format("%1.2f", avgUsage), editText_Unitprice.getText().toString(), ""+String.format("%1.2f", totalPrice), editText_date.getText().toString());
+                    db.addRoad(r);
+                    startActivity(intent);
+                }
             }
         });
     }

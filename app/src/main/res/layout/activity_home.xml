@@ -14,7 +14,30 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/relativeLayout"></RelativeLayout>
+        android:id="@+id/relativeLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Średnie spalanie w miesiącu:"
+            android:id="@+id/textView_avgUsage"
+            android:layout_marginTop="38dp"
+            android:textSize="18dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6 l/100km"
+            android:id="@+id/textView_avgValueUsage"
+            android:layout_below="@+id/textView_avgUsage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="49dp"
+            android:textStyle="bold"
+            android:textSize="22dp" />
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,7 +46,16 @@
         android:layout_below="@+id/relativeLayout"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="57dp"></RelativeLayout>
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_dbres"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="68dp" />
+    </RelativeLayout>
 
 
 </RelativeLayout>

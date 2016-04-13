@@ -1,18 +1,19 @@
 package com.example.szymo.fuelinfo;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.test.ActivityInstrumentationTestCase2;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 
 public class Home extends ActionBarActivity {
 
     Context context;
+    TextView dbres;
+    DBHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,12 @@ public class Home extends ActionBarActivity {
         context = getApplicationContext();
         getSupportActionBar().setTitle("Witaj");
         setContentView(R.layout.activity_home);
+        db = new DBHelper(context);
+
+        dbres = (TextView) findViewById(R.id.textView_dbres);
+
+        for(Road r:db.getAll())
+            dbres.append("\n" + r.getKm() + " km, " + r.getIll() + " l, " + r.getAvgUsage() + " l/100km," + r.getUnitPrice() + " PLN, " + r.getTotalPrice()+" PLN,"+ r.getDate());
 
     }
 
